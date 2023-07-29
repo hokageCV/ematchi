@@ -7,7 +7,7 @@
 
     let size: number = level.size;
     let grid: string[] = createGrid(level);
-    let found: string[] = [];
+    let foundEmojis: string[] = [];
 
     function createGrid(level: Level) {
         const copy = level.emojis.slice();
@@ -30,7 +30,13 @@
 <div class="game">
     <div class="info" />
     <div class="game-grid">
-        <Grid {grid} />
+        <Grid
+            {grid}
+            on:found={(e) => {
+                foundEmojis = [...foundEmojis, e.detail.emoji];
+            }}
+            {foundEmojis}
+        />
     </div>
     <div class="info" />
 </div>

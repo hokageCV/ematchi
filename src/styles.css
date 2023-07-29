@@ -2,14 +2,16 @@
     position: relative;
     box-sizing: border-box;
 
+    /* primary-tile,  base-bg, grid-slight dark, info-light */
     --primary: #253174;
-    --secondary: #deb2e6;
-    --superblack: #080702;
+    --secondary: #d4b6f6;
+    --superblack: #090901;
 
-    --baseBG: #f4e693;
-    --infoBG: #e8da8b;
-    --gridBG: #cac28d;
-    --tileBG: #32429a;
+    --baseBG: #fefef6;
+    --infoBG: #fdfcd8;
+    --gridBG: #f1f1e9;
+    --tileBG: #f9f45d;
+    --tileFlippedBG: #1976c8;
 }
 
 html,
