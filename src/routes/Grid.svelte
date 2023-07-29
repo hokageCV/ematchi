@@ -1,0 +1,9 @@
+<div class="grid" />
+
+<style>
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+    }
+</style>

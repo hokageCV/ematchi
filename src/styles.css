@@ -1,0 +1,22 @@
+* {
+    position: relative;
+    box-sizing: border-box;
+
+    --primary: #253174;
+    --secondary: #deb2e6;
+    --superblack: #080702;
+
+    --baseBG: #f4e693;
+    --infoBG: #e8da8b;
+    --gridBG: #cac28d;
+    --tileBG: #32429a;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+
+    background-color: var(--baseBG);
+}
