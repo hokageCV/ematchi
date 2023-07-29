@@ -18,17 +18,20 @@
         align-items: center;
 
         height: 100%;
+
+        /* setting font size, then for child elements using em. provides better control over sizing  */
+        font-size: min(1vmin, 0.5rem);
     }
 
     .info {
-        width: 80vmin;
-        height: 10vmin;
+        width: 80em;
+        height: 10em;
         background-color: var(--infoBG);
     }
 
     .game-grid {
-        width: 80vmin;
-        height: 80vmin;
+        width: 80em;
+        height: 80em;
         background-color: var(--gridBG);
     }
 </style>
