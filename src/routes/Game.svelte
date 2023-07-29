@@ -62,11 +62,14 @@
         width: 80em;
         height: 10em;
         background-color: var(--infoBG);
+        padding: 2em;
+        border-radius: 10px;
     }
 
     .game-grid {
         width: 80em;
-        height: 80em;
+        margin: 2em;
         background-color: var(--gridBG);
+        border-radius: 10px;
     }
 </style>

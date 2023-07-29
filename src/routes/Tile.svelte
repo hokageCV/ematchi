@@ -22,7 +22,7 @@
     }
 
     span {
-        font-size: 5em;
+        font-size: 4em;
         pointer-events: none;
     }
 
