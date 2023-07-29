@@ -1,5 +1,6 @@
 <script lang="ts">
     import type { Level } from "../types";
+    import Found from "./Found.svelte";
     import Grid from "./Grid.svelte";
     import { levelList } from "./levelList";
     import { shuffleArray } from "./utils";
@@ -39,7 +40,9 @@
             {foundEmojis}
         />
     </div>
-    <div class="info" />
+    <div class="info">
+        <Found {foundEmojis} />
+    </div>
 </div>
 
 <style>
