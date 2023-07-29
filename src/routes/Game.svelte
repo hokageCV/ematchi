@@ -2,6 +2,7 @@
     import type { Level } from "../types";
     import Grid from "./Grid.svelte";
     import { levelList } from "./levelList";
+    import { shuffleArray } from "./utils";
 
     const level = levelList[0];
 
@@ -23,7 +24,7 @@
         }
 
         pairs.push(...pairs); // duplicate the array
-        return pairs;
+        return shuffleArray(pairs);
     }
 </script>
 
