@@ -1,10 +1,12 @@
-<script>
+<script lang="ts">
     import Tile from "./Tile.svelte";
+
+    export let grid: string[];
 </script>
 
 <div class="grid">
-    {#each Array(16) as _}
-        <Tile />
+    {#each grid as emoji}
+        <Tile {emoji} />
     {/each}
 </div>
 
