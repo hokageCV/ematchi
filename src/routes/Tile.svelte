@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { send } from "./transitions";
     import { getTwemojiUrl } from "./utils";
 
     export let emoji: string;
@@ -10,7 +11,7 @@
     <!-- passing the click event -->
     <button on:click />
     {#if !isFound}
-        <img src={getTwemojiUrl(emoji)} alt={emoji} />
+        <img src={getTwemojiUrl(emoji)} alt={emoji} out:send={{ key: emoji }} />
     {/if}
 </div>
 
