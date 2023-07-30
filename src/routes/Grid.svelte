@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { createEventDispatcher } from "svelte";
-    import Tile from "./Tile.svelte";
+    import { createEventDispatcher } from 'svelte';
+    import Tile from './Tile.svelte';
 
     export let grid: string[];
     export let foundEmojis: string[];
@@ -24,7 +24,7 @@
 
             if (grid[firstChoice] === grid[secondChoice]) {
                 // correct, so we need to inform parent hence dispatching an event
-                dispatch("found", {
+                dispatch('found', {
                     emoji,
                 });
             } else {
@@ -54,8 +54,8 @@
 <style>
     .grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(4, 1fr);
+        grid-template-columns: repeat(var(--size), 1fr);
+        grid-template-rows: repeat(var(--size), 1fr);
         grid-gap: 0.5em;
         height: 60vmin;
 

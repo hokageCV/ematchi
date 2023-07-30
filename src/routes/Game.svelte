@@ -1,20 +1,34 @@
 <script lang="ts">
-    import { onMount } from "svelte";
-    import type { Level } from "../types";
-    import Countdown from "./Countdown.svelte";
-    import Found from "./Found.svelte";
-    import Grid from "./Grid.svelte";
-    import { levelList } from "./levelList";
-    import { shuffleArray } from "./utils";
+    import { createEventDispatcher } from 'svelte';
+    import type { Level } from '../types';
+    import Countdown from './Countdown.svelte';
+    import Found from './Found.svelte';
+    import Grid from './Grid.svelte';
+    import { shuffleArray } from './utils';
 
-    const level = levelList[0];
+    const dispatch = createEventDispatcher();
 
-    let size: number = level.size;
-    let grid: string[] = createGrid(level);
+    let size: number;
+    let grid: string[] = [];
     let foundEmojis: string[] = [];
-    let timeLeft: number = level.duration;
-    let duration: number = level.duration;
+    let timeLeft: number = 0;
+    let duration: number = 0;
     let isPlaying: boolean = false;
+
+    export function start(level: Level) {
+        size = level.size;
+        grid = createGrid(level);
+        timeLeft = duration = level.duration;
+
+        resume();
+    }
+
+    function resume() {
+        isPlaying = true;
+        countdown();
+
+        dispatch('play');
+    }
 
     function createGrid(level: Level) {
         const copy = level.emojis.slice();
@@ -38,32 +52,35 @@
         const timeLeftAtStart = timeLeft;
 
         function loop() {
-            if (isPlaying) return;
+            if (!isPlaying) return;
 
             requestAnimationFrame(loop);
 
             timeLeft = timeLeftAtStart - (Date.now() - start);
 
             if (timeLeft <= 0) {
+                dispatch('lose');
                 isPlaying = false;
             }
         }
 
         loop();
     }
-
-    onMount(countdown);
 </script>
 
-<div class="game">
+<div class="game" style="--size: {size}">
     <div class="info">
-        <Countdown
-            {timeLeft}
-            duration={level.duration}
-            on:click={() => {
-                // TODO pause game
-            }}
-        />
+        {#if isPlaying}
+            <Countdown
+                {timeLeft}
+                {duration}
+                on:click={() => {
+                    // TODO pause game
+                    isPlaying = false;
+                    dispatch('pause');
+                }}
+            />
+        {/if}
     </div>
     <div class="game-grid">
         <Grid
@@ -72,7 +89,7 @@
                 foundEmojis = [...foundEmojis, e.detail.emoji];
 
                 if (foundEmojis.length === size ** 2 / 2) {
-                    // TODO game over, win
+                    dispatch('win');
                 }
             }}
             {foundEmojis}
