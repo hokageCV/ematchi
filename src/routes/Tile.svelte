@@ -6,7 +6,7 @@
     export let isFound: boolean;
 </script>
 
-<div class="tile" class:flipped={isSelected}>
+<div class="tile" class:flipped={isSelected || isFound}>
     <!-- passing the click event -->
     <button on:click />
     {#if !isFound}
@@ -21,12 +21,19 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
+        transform-style: preserve-3d;
+        transition: transform 0.3s;
     }
 
     img {
         width: 6em;
         height: 6em;
         pointer-events: none;
+
+        /* to make image sidha when it is flipped  */
+        transform: rotateY(180deg);
+        backface-visibility: hidden;
     }
 
     button {
@@ -34,9 +41,13 @@
         width: 100%;
         height: 100%;
         background-color: transparent;
+
+        /* to disable button when its already clicked */
+        backface-visibility: hidden;
     }
 
     .flipped {
         background-color: var(--tileFlippedBG);
+        transform: rotateY(180deg);
     }
 </style>

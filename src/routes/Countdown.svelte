@@ -31,6 +31,9 @@
         width: 1em;
         height: 1em;
         border-radius: 10px;
+
+        /* background: transparent;
+        border: none; */
     }
 
     svg {
