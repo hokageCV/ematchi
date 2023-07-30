@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+dependencies:
+  '@fontsource/syne-mono':
+    specifier: ^5.0.5
+    version: 5.0.5
+
 devDependencies:
   '@sveltejs/adapter-auto':
     specifier: ^2.0.0
@@ -234,6 +239,10 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@fontsource/syne-mono@5.0.5:
+    resolution: {integrity: sha512-3tuONkKyCRkg5mIscZd8HKxpXEV3huAGbRSvT+OuIv66a1Zyo5cY8DDTisg3HnfayJxqdkshi01PRhoUXogvqg==}
+    dev: false
 
   /@jridgewell/gen-mapping@0.3.3:
     resolution: {integrity: sha512-HLhSWOLRi875zjjMG/r+Nv0oCW8umGb0BgEhyX3dDX3egwZtB8PqLnjz3yedt8R5StBrzcg4aBpnh8UA9D1BoQ==}
