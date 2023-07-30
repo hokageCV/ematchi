@@ -21,7 +21,8 @@
         size = level.size;
         grid = createGrid(level);
         foundEmojis = [];
-        timeLeft = duration = level.duration;
+        timeLeft = level.duration;
+        duration = level.duration;
 
         resume();
     }

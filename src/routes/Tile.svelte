@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { send } from "./transitions";
-    import { getTwemojiUrl } from "./utils";
+    import { send } from './transitions';
+    import { getTwemojiUrl } from './utils';
 
     export let emoji: string;
     export let isSelected: boolean;
@@ -18,6 +18,9 @@
 <style>
     .tile {
         background-color: var(--tileBG);
+        border: 2px solid black;
+
+        border-radius: 10px;
 
         display: flex;
         justify-content: center;
@@ -43,12 +46,18 @@
         height: 100%;
         background-color: transparent;
 
+        border: none;
+        border-radius: 10px;
+
         /* to disable button when its already clicked */
         backface-visibility: hidden;
     }
 
     .flipped {
         background-color: var(--tileFlippedBG);
+        border: 0.5px solid black;
+        border-radius: 10px;
+
         transform: rotateY(180deg);
     }
 </style>

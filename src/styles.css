@@ -1,4 +1,4 @@
-@import "@fontsource/syne-mono";
+@import '@fontsource/syne-mono';
 
 * {
     position: relative;
@@ -12,8 +12,9 @@
     --baseBG: #fefef6;
     --infoBG: #eceabb;
     --gridBG: #f1f1e9;
-    --tileBG: #f9f45d;
-    --tileFlippedBG: #1976c8;
+    --tileBG: #bab645;
+    /* --tileBG: #f9f45d; */
+    --tileFlippedBG: #f9f45d;
 }
 
 html,
@@ -21,12 +22,12 @@ body {
     margin: 0;
     padding: 0;
     height: 100%;
-    font-family: system-ui, Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    font-family: system-ui, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
         sans-serif;
 
     background-color: var(--baseBG);
 }
 
 h1 {
-    font-family: "Syne Mono";
+    font-family: 'Syne Mono';
 }
