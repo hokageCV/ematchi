@@ -12,6 +12,7 @@
 
 <Game
     bind:this={game}
+    isPlaying={state === 'playing'}
     on:play={() => (state = 'playing')}
     on:pause={() => (state = 'paused')}
     on:win={() => (state = 'won')}
@@ -31,12 +32,9 @@
 
         <div class="buttons">
             {#if state === 'paused'}
-                <button>resume</button>
-                <button>quit</button>
+                <button on:click={() => (state = 'playing')}>resume</button>
+                <button on:click={() => (state = 'waiting')}>quit</button>
             {:else}
-                <!-- <button>easy</button>
-                <button>medium</button>
-                <button>hard</button> -->
                 {#each levelList as level}
                     <button on:click={() => game.start(level)}>{level.label}</button>
                 {/each}

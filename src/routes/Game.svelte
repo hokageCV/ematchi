@@ -7,26 +7,41 @@
     import { shuffleArray } from './utils';
 
     const dispatch = createEventDispatcher();
+    export let isPlaying: boolean = false;
 
     let size: number;
     let grid: string[] = [];
     let foundEmojis: string[] = [];
     let timeLeft: number = 0;
     let duration: number = 0;
-    let isPlaying: boolean = false;
+    // let isPlaying: boolean = false;
+    let pauseTime: number = 0;
 
     export function start(level: Level) {
         size = level.size;
         grid = createGrid(level);
+        foundEmojis = [];
         timeLeft = duration = level.duration;
 
         resume();
     }
 
+    $: {
+        if (isPlaying) {
+            resume();
+        }
+    }
+
     function resume() {
         isPlaying = true;
-        countdown();
 
+        if (pauseTime > 0) {
+            const timePaused = Date.now() - pauseTime;
+            timeLeft = timeLeft + timePaused;
+            pauseTime = 0;
+        }
+
+        countdown();
         dispatch('play');
     }
 
@@ -66,20 +81,18 @@
 
         loop();
     }
+
+    function handlePause() {
+        isPlaying = false;
+        pauseTime = Date.now();
+        dispatch('pause');
+    }
 </script>
 
 <div class="game" style="--size: {size}">
     <div class="info">
         {#if isPlaying}
-            <Countdown
-                {timeLeft}
-                {duration}
-                on:click={() => {
-                    // TODO pause game
-                    isPlaying = false;
-                    dispatch('pause');
-                }}
-            />
+            <Countdown {timeLeft} {duration} on:click={handlePause} />
         {/if}
     </div>
     <div class="game-grid">
